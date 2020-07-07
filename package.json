@@ -1,5 +1,5 @@
 {
-  "name": "beautify-api-server",
+  "name": "capsule_server",
   "version": "1.0.0",
   "description": "api for BeautifyApi",
   "main": "app.js",
