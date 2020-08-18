@@ -33,7 +33,7 @@ const SESSION_CONFIG = {
 // console.log(config.uploadDir)
 new DirExists().createDir(config.uploadDir)
 
-app.use(views(join(__dirname + './src/views'), {
+app.use(views(join(__dirname + '/src/views'), {
   extension: "hbs",  //使用Handlebars模板引擎
   map: { 
     hbs: 'handlebars' 

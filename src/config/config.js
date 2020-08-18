@@ -7,7 +7,7 @@ const client_id = '383ac64a98fca7cdd347'
 
 module.exports = {
   // prod
-  environment: 'prod',
+  environment: 'dev',
   port: 3005,
   database: {
     dbName: 'beautifyApi',
@@ -38,5 +38,5 @@ module.exports = {
     ADMIN: 16,
     SUPER_ADMIN: 32
   },
-  uploadDir: new DirExists().createDir(path.join(__dirname, '../../files'))
+  uploadDir: new DirExists().createDir(path.join(__dirname, '../../../files'))
 }

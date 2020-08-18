@@ -3,7 +3,7 @@ const fs = require('fs')
 /* const {
   isUndefined
 } = require('./') */
-const { apiDataProxy } = require('../utils/proxy')
+const { apiDataProxy } = require('./proxy')
 
 const jsonToWord = (docData, storagedPath) => {
   // Create an empty Word object:

@@ -1,4 +1,4 @@
-const infoProxy = (info) => {
+const _infoProxy = (info) => {
   const handler = {
     get (target, key) {
       return Reflect.get(target, key) || ''
@@ -13,7 +13,7 @@ const apiDataProxy = (data) => {
     get (target, key) {
       switch (key) {
         case 'info':
-          return infoProxy(Reflect.get(target, key))
+          return _infoProxy(Reflect.get(target, key))
         case 'host':
         case 'basePath':
           return Reflect.get(target, key) || ''
@@ -30,6 +30,6 @@ const apiDataProxy = (data) => {
   return new Proxy(data || {}, handler)
 }
 
-module.export = {
+module.exports = {
   apiDataProxy
 }
