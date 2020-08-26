@@ -3,7 +3,7 @@ const DirExists = require('../utils/models/dirExists')
 
 const GITHUB_OAUTH_URL = 'https://github.com/login/oauth/authorize'
 const SCOPE = 'user'
-const client_id = '383ac64a98fca7cdd347'
+const client_id = 'client_id'
 
 module.exports = {
   // prod
