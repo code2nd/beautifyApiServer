@@ -1,8 +1,7 @@
 const Router = require('koa-router')
 
 const { 
-  RegisterValidator, 
-  LoginValidator, 
+  NotEmptyValidator,
   GetUsersValidator
 } = require('../../validators/validator')
 const { User } = require('../../models/user')
@@ -18,7 +17,7 @@ const router = new Router({
 
 // 注册(用户名注册)
 router.post('/register', async (ctx) => {
-  const v = await new RegisterValidator().validate(ctx)
+  const v = await new NotEmptyValidator('username', 'password1', 'password2').validate(ctx)
   const user = {
     username: v.get('body.username'),
     password: v.get('body.password2')
@@ -40,7 +39,7 @@ router.post('/github', async (ctx) => {
 
 // 登录 (用户名密码登录)
 router.post('/login', async (ctx) => {
-  const v = await new LoginValidator('username', 'password').validate(ctx)
+  const v = await new NotEmptyValidator('username', 'password').validate(ctx)
   const user = {
     username: v.get('body.username'),
     password: v.get('body.password')
