@@ -21,7 +21,7 @@ module.exports = {
     expiresIn: 60*60*24       // 令牌的过期时间，60*60代表的是一个小时
   },
   redis: {
-    port: 6379,
+    port: 'your port',
     host: "127.0.0.1",
     password: "your password",
     db: 0
