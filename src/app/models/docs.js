@@ -148,10 +148,10 @@ class Docs extends Model {
   }
 
    // 覆盖文件修改数据信息
-   static async shearDocs (userId, name, url) {
+   static async shearDocs (userId, name, storedName, description) {
     await Docs.update({
-      url,
-      wordUrl: '',
+      storedName,
+      description,
       isUpdate: 1
     }, {
       where: {
@@ -190,12 +190,12 @@ class Docs extends Model {
   }
 
   // 设置isUpdate
-  static async setIsUpdate (url, value) {
+  static async setIsUpdate (storedName, value) {
     await Docs.update({
       isUpdate: value
     }, {
       where: {
-        url
+        storedName
       }
     })
   }
@@ -223,8 +223,7 @@ Docs.init({
   userId: Sequelize.INTEGER,
   name: Sequelize.STRING(64),
   description: Sequelize.STRING(64),
-  url: Sequelize.STRING(128),
-  wordUrl: Sequelize.STRING(128),
+  storedName: Sequelize.STRING(64),
   deletable: Sequelize.BOOLEAN,
   isUpdate: Sequelize.BOOLEAN,
   createdAt: Sequelize.DATE,

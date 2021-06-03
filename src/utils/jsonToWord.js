@@ -145,54 +145,54 @@ const jsonToWord = (docData, storagedPath) => {
       }
 
       data.push([{
-          type: "text",
-          val: title,
-          opt: moduleTitleOpt
-        }, {
-          type: "linebreak"
-        }, {
-          type: "text",
-          val: "URL:",
-          opt: paraTitle
-        }, {
-          type: "linebreak"
-        }, {
-          type: "text",
-          val: `    ${method.toUpperCase()}  ${path}`,
-          opt: paraText
-        }, {
-          type: "linebreak"
-        }, {
-          type: "text",
-          val: "Parameter:",
-          opt: paraTitle
-        }, {
-          type: "linebreak"
-        },
-        ...parametersData,
-        {
-          type: "text",
-          val: "Response:",
-          opt: paraTitle
-        }, {
-          type: "linebreak"
-        }, {
-          type: "text",
-          val: jsonToString(responses.success.example),
-          opt: paraText
-        }, {
-          type: "linebreak"
-        }, {
-          type: "text",
-          val: "Response_Description:",
-          opt: paraTitle
-        }, {
-          type: "linebreak"
-        },
-        ...resDesData,
-        {
-          type: "linebreak"
-        }
+        type: "text",
+        val: title,
+        opt: moduleTitleOpt
+      }, {
+        type: "linebreak"
+      }, {
+        type: "text",
+        val: "URL:",
+        opt: paraTitle
+      }, {
+        type: "linebreak"
+      }, {
+        type: "text",
+        val: `    ${method.toUpperCase()}  ${path}`,
+        opt: paraText
+      }, {
+        type: "linebreak"
+      }, {
+        type: "text",
+        val: "Parameter:",
+        opt: paraTitle
+      }, {
+        type: "linebreak"
+      },
+      ...parametersData,
+      {
+        type: "text",
+        val: "Response:",
+        opt: paraTitle
+      }, {
+        type: "linebreak"
+      }, {
+        type: "text",
+        val: jsonToString(responses.success.example),
+        opt: paraText
+      }, {
+        type: "linebreak"
+      }, {
+        type: "text",
+        val: "Response_Description:",
+        opt: paraTitle
+      }, {
+        type: "linebreak"
+      },
+      ...resDesData,
+      {
+        type: "linebreak"
+      }
       ])
     }
   }
@@ -260,14 +260,14 @@ const jsonToWord = (docData, storagedPath) => {
     }
 
     data.push({
-        type: "text",
-        val: title,
-        opt: moduleTitleOpt
-      }, {
-        type: "text",
-        val: description,
-        opt: paraText
-      },
+      type: "text",
+      val: title,
+      opt: moduleTitleOpt
+    }, {
+      type: "text",
+      val: description,
+      opt: paraText
+    },
       ...tables
     )
   }
@@ -275,7 +275,7 @@ const jsonToWord = (docData, storagedPath) => {
   docx.createByJson(data);
 
   //let out = fs.createWriteStream(`./words/example${new Date().getTime()}.docx`)
-  let out = fs.createWriteStream(storagedPath)
+  let out = fs.createWriteStream(storagedPath, { flags: 'w' })
 
   out.on('error', function (err) {
     console.log(err)

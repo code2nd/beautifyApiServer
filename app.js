@@ -1,3 +1,7 @@
+const http = require('http');
+const https = require('https');
+const fs = require('fs');
+
 const Koa = require('koa')
 const bodyParser = require('koa-bodyparser')
 const session = require('koa-session')
@@ -10,7 +14,7 @@ const catchError = require('./src/middlewares/exeption')
 const auth = require('./src/app/services/auth')
 const redisConfig = require('./src/config/config').redis
 const DirExists = require('./src/utils/models/dirExists')
-
+const { isDev } = require('./src/utils');
 
 const SessionStore = require('./src/app/services/sessionStore')
 
@@ -25,7 +29,7 @@ const redis = new Redis(redisConfig)
 
 const SESSION_CONFIG = {
   key: 'SESSIONID',
-  maxAge: 1000*60*60*24,
+  maxAge: 1000 * 60 * 60 * 24,
   store: new SessionStore(redis)
 }
 
@@ -35,8 +39,8 @@ new DirExists().createDir(config.uploadDir)
 
 app.use(views(join(__dirname + '/src/views'), {
   extension: "hbs",  //使用Handlebars模板引擎
-  map: { 
-    hbs: 'handlebars' 
+  map: {
+    hbs: 'handlebars'
   }
 }))
 
@@ -50,7 +54,18 @@ auth(app)
 process.cwd()
 InitManager.initCore(app)
 
+if (isDev()) {
+  const http_server = http.createServer(app.callback())
+  http_server.listen(config.port)
+} else {
+  const option = {
+    key: fs.readFileSync('/usr/local/webserver/nginx/ssl/jalamy.cn.key'),
+    cert: fs.readFileSync('/usr/local/webserver/nginx/ssl/jalamy.cn.pem')
+  }
+  const https_server = https.createServer(option, app.callback())
+  https_server.listen(config.port)
+}
 
-app.listen(config.port, () => {
+/* app.listen(config.port, () => {
   console.log(`app running at port ${config.port}`)
-})
+}) */
