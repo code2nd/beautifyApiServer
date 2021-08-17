@@ -13,7 +13,7 @@
   "author": "Jalamy",
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "basic-auth": "2.0.1",
     "bcryptjs": "2.4.3",
     "handlebars": "4.7.6",
