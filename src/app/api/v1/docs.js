@@ -53,15 +53,17 @@ router.get('/visitorDocList', async (ctx) => {
 // 新增
 router.post('/docs', new Auth().m, async (ctx) => {
   const { userId } = ctx.auth
-  const v = await new NotEmptyValidator('name', 'url', 'description').validate(ctx)
+  const v = await new NotEmptyValidator('name', 'description').validate(ctx)
+  const { storedName } = ctx.session.tempFile
   const param = {
     name: v.get('body.name'),
-    url: v.get('body.url'),
     description: v.get('body.description'),
+    storedName,
     userId
   }
   await Docs.addDocs(param)
   ctx.session.docs.update = true
+  ctx.session.tempFile = null;
   success('添加成功', 0)
 })
 

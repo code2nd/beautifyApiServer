@@ -1,5 +1,5 @@
 {
-  "name": "beautify-api-server",
+  "name": "capsule_server",
   "version": "1.0.0",
   "description": "api for BeautifyApi",
   "main": "app.js",
@@ -26,10 +26,10 @@
     "koa-session": "^5.13.1",
     "koa-views": "^6.2.1",
     "lodash": "4.17.15",
-    "multiparty": "4.2.1",
+    "multiparty": "4.2.2",
     "mysql": "2.17.1",
     "mysql2": "2.0.1",
-    "officegen": "^0.6.4",
+    "officegen": "^0.6.5",
     "require-directory": "2.1.1",
     "sequelize": "5.21.2",
     "validator": "12.1.0"
