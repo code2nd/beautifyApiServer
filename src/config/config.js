@@ -38,6 +38,5 @@ module.exports = {
     ADMIN: 16,
     SUPER_ADMIN: 32
   },
-  uploadDir: new DirExists().createDir(path.join(__dirname, '../../../files')),
-  // fileServer: 'https://www.jalamy.cn:9002/'
+  uploadDir: new DirExists().createDir(path.join(__dirname, '../../../files'))
 }
